@@ -27,7 +27,9 @@
    Place the moderator script, =multipro.py=, as well as the two *.py
    by Jimmy Charnley (=calculate_rmsd.py= and =__init__.py=) into the
    same directory containing the =*.xyz= to scrutinize.  Beside these
-   three files and the five test =*.xyz=, the project  files in total).
+   three files and the five test =*.xyz=, the project contains this
+   README as =*.org= and =*.md= as well as a LICENSE (eleven files in
+   total).
 
    Check the computer to be used.  At present, the maximum number of
    tests performed simultaneously is set to equal 3 (three, line #79)
