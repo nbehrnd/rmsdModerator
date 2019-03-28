@@ -51,9 +51,9 @@ total).
 Check the computer to be used.  At present, the maximum number of
 tests performed simultaneously is set to equal 3 (three, line #79)
 which balances nicely gain in performance with resources still
-available for other (light weight) interaction with quadrocore
-processor.  Feel free to increase / adapt this number at your own
-risk.  Launch the moderator script from the terminal by
+available for other (light weight) interaction with a quadrocore
+processor computer.  Feel free to increase / adapt this number at
+your own risk.  Launch the moderator script from the terminal by
 
     python3 multipro.py
 
