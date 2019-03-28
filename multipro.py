@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # name:   multipro.py
 # author: nbehrnd@yahoo.com
-# edit:   2019-Mar-27
+# edit:   2019-Mar-28
 
 """
-Engage calculate_rmsd.py simultaenously on many *.xyz and multiple CPUs
+Engage calculate_rmsd.py simultaneously on many *.xyz and multiple CPUs
 
 Allow the concurrent, parallel run of calculate_rmsd.py.  Assumes
 Python3 as the engine.  To perform well, this script and relayed
@@ -17,8 +17,6 @@ python3 multipro.py
 import os
 import sys
 import subprocess as sub
-from concurrent import futures
-import concurrent.futures
 from multiprocessing import Pool as ThreadPool
 import time
 fileRegister = []
@@ -51,6 +49,7 @@ def constructCommand():
 
             testRegister.append(str(command))
         del fileRegister[0]
+    testRegister.sort()
     return testRegister
 
 
@@ -58,16 +57,16 @@ fileSearch()
 constructCommand()
 
 
-#def testing(data=""):
-#    """
-#    relay the test to calculate_rmsd.py
+# def testing(data=""):
+#     """
+#     relay the test to calculate_rmsd.py
 #
-#    This is the GIL limited, linear / single CPU core approach.
-#    """
-#    for entry in testRegister:
-#        time.sleep(0.1)
-#        print(entry)
-#        sub.call(entry, shell=True)
+#     This is the GIL limited, linear / single CPU core approach.
+#     """
+#     for entry in testRegister:
+#         time.sleep(0.1)
+#         print(entry)
+#         sub.call(entry, shell=True)
 
 
 def test(testRegister):
@@ -76,9 +75,11 @@ def test(testRegister):
     """
     print(testRegister)
     sub.call(testRegister, shell=True)
+
+
 pool = ThreadPool(3)  # number of tests to be performed in parallel
 pool.starmap(test, zip(testRegister))
-pool.close() 
+pool.close()
 pool.join()
 
 sys.exit()
